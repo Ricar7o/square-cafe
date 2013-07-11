@@ -2,7 +2,9 @@
   <head>
     <!-- Set the Title in the Browser Window Bar -->
     <title>Square Cafe</title>
-
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="interaction.js"></script>
     <link rel="stylesheet" type="text/css" href="square.css" />
   </head>
   <body>
@@ -30,7 +32,7 @@
             <!-- See this "drink[]" name? -->
             <!-- This is turned into an array of items -->
             <select name="drink[]">
-              <option>Please select a drink</option>
+              <option selected>Please select a drink</option>
               <optgroup label="Coffee">
                 <option data-price="200" value="house">House Coffee — $2.00</option>
                 <option data-price="200" value="iced">Iced Coffee — $2.00</option>
@@ -54,22 +56,26 @@
           <dl>
             <dt># of Drinks</dt>
             <dd id="drinks">0</dd>
+            
+            <dt>Taxes</dt>
+            <dd id="taxes">$0.00</dd>
 
             <dt>Cost</dt>
             <dd id="cost">$0.00</dd>
+            <input type="submit" value="Place order">
           </dl>
         </form>
       </div>
 
 
-      <div class="panel">
+      <!-- <div class="panel">
         <h2>Where We're At</h2>
         <iframe
           width="100%"
           height="450"
           frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
           src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=austin+tx&amp;aq=&amp;sll=30.307761,-97.753401&amp;sspn=0.679342,1.352692&amp;ie=UTF8&amp;hq=&amp;hnear=Austin,+Travis,+Texas&amp;ll=30.307689,-97.753601&amp;spn=0.679622,1.352692&amp;t=m&amp;z=10&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=austin+tx&amp;aq=&amp;sll=30.307761,-97.753401&amp;sspn=0.679342,1.352692&amp;ie=UTF8&amp;hq=&amp;hnear=Austin,+Travis,+Texas&amp;ll=30.307689,-97.753601&amp;spn=0.679622,1.352692&amp;t=m&amp;z=10" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-      </div>
+      </div> -->
 
     </div>
 

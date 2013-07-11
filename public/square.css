@@ -43,7 +43,7 @@ h1, p {
 dl {
   border-top: solid #FFF 1px;
   float: right;
-  margin-top: 3em;
+  margin-top: 2em;
   padding-top: 1em;
   width: 10em;
 }
@@ -55,6 +55,13 @@ dt {
   text-align: right;
 }
 
+dd {
+  text-align: right;
+}
+
+input {
+  float: right;
+}
 
 .panel, #sidebar {
     border-radius: 4px;
