@@ -5,9 +5,20 @@
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
      <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="interaction.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="square.css" />
   </head>
   <body>
+    
+    <!-- Code for the modal window -->
+    <div id="modal" title="Want some discounts?">
+      <form id="email-form">
+        <p>Register here and we'll send you some (no spam)</p>
+        <input id="modal-email" type="email" name="email" placeholder="Email" required>
+        <input id="modal-submit" type="button" value="Register">
+      </form>
+    </div>
+
     <div id="headmast">
       <h1>Square Cafe</h1>
       <h2>716 Congress, Suite 404, Austin, TX</p>
@@ -18,16 +29,18 @@
         <div id="picture">
           <img src="cappucino.jpg" width="160" />
         </div>
-
-        <a class="twitter-timeline" href="https://twitter.com/MakerSquareCafe" data-widget-id="353241485782700032">Tweets by @MakerSquareCafe</a>
+        
+        <!-- Twitter widget -->
+        <!-- <a class="twitter-timeline" href="https://twitter.com/MakerSquareCafe" data-widget-id="353241485782700032">Tweets by @MakerSquareCafe</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        -->
 
       </div>
       <div class="panel">
         <h2>What Would You Like?</h2>
 
 
-        <form>
+        <form id="drink-order">
           <div>
             <!-- See this "drink[]" name? -->
             <!-- This is turned into an array of items -->

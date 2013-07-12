@@ -31,9 +31,9 @@ post '/shop' do
 end
 
 post '/signup' do
-  puts "\n" * 3
+  puts "\n" * 2
   puts "Received email: #{params[:email]}"
-  puts "\n" * 3
+  puts "\n" * 2
 
   "Thanks for signing up!"
 end

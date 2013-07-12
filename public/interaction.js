@@ -1,5 +1,5 @@
 // alert("Javascript is loaded.");
-
+// =============== FUNCTIONS ===================
 function serverIsDown() {
   $('.panel h2').text('Our server is having difficulties, please try again...');
   $('input').removeAttr("disabled");
@@ -19,12 +19,84 @@ function loadImage(selectedItem) {
   $('#picture img').attr('src', selectedItem.val() + ".jpg");
 }
 
+function submitEmail() {
+  d = $("#email-form").serialize();
+  $.ajax({
+    type: "POST",
+    url: "/signup",
+    data: d,
+    success: function(data) {
+      $("#modal p").text(data);
+      createCookie("email", $("#modal-email").val(), 1);
+      setTimeout(function(){
+        $("#modal").dialog("close");
+      }, 500);
+    },
+    error: function(data) {
+      $("#modal p").text(data); // This is the part that handles the error being down
+    },
+    dataType: "html"
+  });
+}
 
+function createCookie(name, value, expires, path, domain) {
+  var cookie = name + "=" + escape(value) + ";";
+  if (expires) {
+    // If it's a date
+    if (expires instanceof Date) {
+      // If it isn't a valid date
+      if (isNaN(expires.getTime()))
+        expires = new Date();
+    }
+    else
+      expires = new Date(new Date().getTime() + parseInt(expires)*1000*60*60*24);
+    cookie += "expires=" + expires.toGMTString() + ";";
+  }
+  if (path)
+    cookie += "path=" + path + ";";
+  if (domain)
+    cookie += "domain=" + domain + ";";
+  document.cookie = cookie;
+}
+
+function getCookie(name) {
+  var regexp = new RegExp("(?:^" + name + "|;\\s*"+ name + ")=(.*?)(?:;|$)", "g");
+  var result = regexp.exec(document.cookie);
+  return (result === null) ? null : result[1];
+}
+
+// =============== DOCUMENT IS READY ===================
 $(document).ready(function() {
   $("input[type=submit]").attr("disabled", "disabled");
+  
+  if (getCookie("email")) {
+    $(".panel h2").prepend(getCookie("email") + ", ");
+  }
+  else {
+    $("#modal").dialog({
+      modal: true,
+      width: 400,
+      height: 180,
+      hide: "fade"
+    });
+  }
+
+  $(".ui-widget-overlay").click(function(){
+    $("#modal").dialog("close");
+  });
+
+  $("#modal-email").keyup(function(event) {
+    if(event.keyCode == 13) {
+      submitEmail();
+    }
+  })
+
+  $("#modal-submit").click(function(){
+    submitEmail();
+  });
 
   // --------- Adding drinks to order ---------
-  $('form').on('change', 'select', function() {
+  $('#drink-order').on('change', 'select', function() {
     // If I set the item to 'Please select your coffee', I want to get rid of it.
     if ((this).value == "Please select a drink"){
       $(this).empty();
@@ -74,7 +146,7 @@ $(document).ready(function() {
   });
 
   // ------- Submit logic ----------
-  $("form").submit(function(event) {
+  $("#drink-order").submit(function(event) {
     event.preventDefault();
     $("input").attr("disabled", "disabled");
     //Change the tax calculations

@@ -28,6 +28,36 @@ body {
   width: 60em;
 }
 
+.ui-widget-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+#modal {
+  display: none;
+}
+
+#modal p {
+  text-shadow: none;
+  font-size: .8em;
+}
+
+#modal input#modal-email {
+  float: left;
+  width: 80%;
+  font-size: .8em;
+}
+
+#modal input#modal-submit {
+  line-height: 1em;
+  
+}
 
 h1 {
   font-size: 3em;
